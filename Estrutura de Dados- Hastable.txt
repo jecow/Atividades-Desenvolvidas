@@ -1,0 +1,131 @@
+using System;
+using System.Collections;
+
+22 – Faça um programa que cadastre em um Hashtable alguns modelos de carros de montadoras nacionais,
+conforme a tabela abaixo(você deve fazer esse cadastro internamente, não o usuário – crie uma função
+para isso). Seu Hashtable tem como chave o nome da montadora, e como valor um Arraylist contendo os 
+modelos de carros da tabela abaixo. Após o cadastro, peça ao usuário que digite o nome de uma montadora.
+Você deve imprimir a quantidade de modelos e nome de cada um.
+
+Fiat          Mille  Novo Uno   Palio   Siena  Freemont   Bravo   Punto  Linea  Palio Weekend
+
+Volkagen        Gol  Voyage     Polo    Passat  Amarok    Fox    Golf    Jetta  Tiguan
+
+Ford         Focus   Fiesta     Ka   New Fiesta  Fusion   Edge    GM     Celta  Classic   Prisma    Agile   Omega    Cruze   Camaro   Malibu
+
+
+class Program
+{
+
+    static public void Main()
+    {
+
+        ArrayList FiatMotors = new ArrayList();
+        FiatMotors.Add("Mille");
+        FiatMotors.Add("Novo Uno");
+        FiatMotors.Add("Pálio");
+        FiatMotors.Add("Siena");
+        FiatMotors.Add("Freemont");
+        FiatMotors.Add("Bravo");
+        FiatMotors.Add("Punto");
+        FiatMotors.Add("Linea");
+        FiatMotors.Add("Pálio Weekend");
+
+        PreencherHash("Fiat", FiatMotors);
+
+        ArrayList VolkswagenMotors = new ArrayList();
+        VolkswagenMotors.Add("Gol");
+        VolkswagenMotors.Add("Voyage");
+        VolkswagenMotors.Add("Polo");
+        VolkswagenMotors.Add("Passat");
+        VolkswagenMotors.Add("Amarok");
+        VolkswagenMotors.Add("Fox");
+        VolkswagenMotors.Add("Golf");
+        VolkswagenMotors.Add("Jetta");
+        VolkswagenMotors.Add("Tiguan");
+
+
+        PreencherHash("Volkswagen", VolkswagenMotors);
+
+        ArrayList FordMotors = new ArrayList();
+        FordMotors.Add("Focus");
+        FordMotors.Add("Fiesta");
+        FordMotors.Add("Ka");
+        FordMotors.Add("New Fiesta");
+        FordMotors.Add("Fusion");
+        FordMotors.Add("Edge");
+
+        PreencherHash("Ford", FordMotors);
+
+        ArrayList GmMotors = new ArrayList();
+        GmMotors.Add("Celta");
+        GmMotors.Add("Classic");
+        GmMotors.Add("Prisma");
+        GmMotors.Add("Agile");
+        GmMotors.Add("Omega");
+        GmMotors.Add("Cruze");
+        GmMotors.Add("Camaro");
+        GmMotors.Add("Malibu");
+
+        PreencherHash("Gm", GmMotors);
+
+
+        Console.ReadKey();
+    }
+    public static void PreencherHash(string Montadora, ArrayList NomeVeiculo)
+    {
+        Hashtable Veiculos = new Hashtable();
+        Veiculos.Add(Montadora, NomeVeiculo);
+
+        VeiculosPesquisa(Veiculos);
+
+    }
+    public static void VeiculosPesquisa(Hashtable Veiculos)
+    {
+
+        string pesquisa;
+
+        Console.WriteLine("Informe o nome da montadora desejada dentre as opções abaixo:");
+
+        Console.WriteLine("Fiat   -   Volkswagen  -   Ford   -   Gm");
+
+        pesquisa = Console.ReadLine();
+
+        foreach (DictionaryEntry Chave in Veiculos)
+        {
+            if (pesquisa == (string)Chave.Key)
+            {
+                pesquisa = (string)Chave.Key;
+
+                Console.WriteLine("Montadora {0}, encontrada.", pesquisa);
+
+            }
+
+        }
+
+
+        ImprimirVeiculos(Veiculos);
+    }
+
+    public static void ImprimirVeiculos(Hashtable Montadora)
+    {
+        int contador=0;
+        
+
+
+        ArrayList AL = new ArrayList();
+
+        foreach (DictionaryEntry Chave in Montadora)
+        {
+            AL = (ArrayList)Chave.Value;
+        }
+
+        foreach(string Item in AL)
+        {
+            Console.WriteLine("\nVeiculos da montadora " + Item);
+            contador++;
+        }
+        Console.WriteLine("\nVeiculos da montadora " + contador);
+        
+    }
+}
