@@ -1,0 +1,19 @@
+ Fazer um programa em C# que use um método recursivo que receba 
+os caracteres de uma palavra e imprima
+esta palavra de trás para frente.
+
+public void Palavra(string S, int i,int indice)
+        {
+            
+            string aux;
+           if(S.Length > 0 && 0 != indice  )
+            {
+                aux= S[i].ToString();
+                i++;
+                indice--;
+                Palavra(S,i, indice);
+                Console.Write(aux);
+            }
+            
+            
+        }
