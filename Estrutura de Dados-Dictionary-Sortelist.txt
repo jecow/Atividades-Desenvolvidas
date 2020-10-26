@@ -1,0 +1,116 @@
+* 33 – Faça um programa que monte a estrutura abaixo usando Dictionary<> ou SortedList<>:
+Chave (continente)        Valor
+América                   Chave (País)          Valor (População)
+                           Brasil               202,656,784
+                           México               120,286,656
+                             ...                  ...
+                        Estados Unidos                   318,892,096
+Ásia                     Chave (País)             Valor (População)
+                            China                1,355,692,544
+                             ...                     ...
+                             Japão              127,103,392
+
+Você deve inserir pelo menos 3 continentes com no mínimo 6 países em cada um.
+Gere um relatório com base no layout abaixo:
+Continente: nome do continente
+Nome do país 1 – População: população do país 1
+Nome do país 2 – População: população do país 2
+...
+Nome do país n – População: população do país n
+População total: 999999
+
+No link http://www.indexmundi.com/map/?l=pt você encontrará uma tabela com as populações de diversos países.
+Obs: você pode implementar todo o seu código dentro do Main(). 
+O objetivo desse exercício é que você aprenda a manipular uma estrutura tão sofisticada quanto essa.
+
+using System;
+using System.Collections;
+using System.Data;
+
+class Program
+{    //Continente: nome do continente
+    // Nome do país 1 – População: população do país 1
+    // Nome do país 2 – População: população do país 2
+    static public void Main()
+    {       
+        Hashtable America = new Hashtable();
+        America.Add("Brasil", 210147125);
+        America.Add("Uruguay", 3518552);
+        America.Add("Chile", 17574003);
+        America.Add("México", 123675325);
+        America.Add("Estados Unidos", 325719178);
+        America.Add("Colômbia", 50372424);
+
+        Hashtable Asia = new Hashtable();
+
+        Asia.Add("Japão", 126168160);
+        Asia.Add("Afeganistão", 34940836);
+        Asia.Add("Arábia Saudita", 333091112);
+        Asia.Add("China", 1384689024);
+        Asia.Add("Iraque", 83024744);
+        Asia.Add("Rússia", 142122784);
+
+        Hashtable Africa = new Hashtable();
+        Africa.Add("Africa do Sul", 55380208);
+        Africa.Add("Nigéria", 203452512);
+        Africa.Add("Etiopia", 108386302);
+        Africa.Add("Tânzania", 55451344);
+        Africa.Add("Uganda", 40853748);
+        Africa.Add("Senegal", 15020945);
+
+        SortedList Mundo = new SortedList();
+
+       
+
+        Mundo.Add("América", America);
+
+        Mundo.Add("Ásia", Asia);
+
+        Mundo.Add("África", Africa);
+
+        Hashtable Hash = new Hashtable();
+        foreach(DictionaryEntry Chave in Mundo)
+        {
+            if (Chave.Key.Equals("África"))
+            {
+                Console.WriteLine("\nContinente : " + Chave.Key);
+                Hash=((Hashtable)Chave.Value);
+                foreach(DictionaryEntry Chave1 in Hash)
+                {
+                    Console.WriteLine("\n{0} - População:{1}", Chave1.Key, Chave1.Value);
+                    
+                }
+            }
+
+        }
+        foreach (DictionaryEntry Chave in Mundo)
+        {
+            if (Chave.Key.Equals("América"))
+            {
+                Console.WriteLine("\nContinente : " + Chave.Key);
+                Hash = ((Hashtable)Chave.Value);
+                foreach (DictionaryEntry Chave1 in Hash)
+                {
+                    Console.WriteLine("\n{0} - População:{1}", Chave1.Key, Chave1.Value);
+
+                }
+            }
+
+        }
+        foreach (DictionaryEntry Chave in Mundo)
+        {
+            if (Chave.Key.Equals("Ásia"))
+            {
+                Console.WriteLine("\nContinente : " + Chave.Key);
+                Hash = ((Hashtable)Chave.Value);
+                foreach (DictionaryEntry Chave1 in Hash)
+                {
+                    Console.WriteLine("\n{0} - População:{1}", Chave1.Key, Chave1.Value);
+
+                }
+            }
+
+        }
+        Console.ReadKey();
+    }
+}
